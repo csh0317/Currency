@@ -29,21 +29,22 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void convert(View view){
+//        getResources().getString(R.string.app_name);
         String dollar = ntd.getText().toString();
         if(dollar.isEmpty()){
             new AlertDialog.Builder(this)
-                    .setTitle("Problem")
-                    .setMessage("Please enter your NTD amount")
-                    .setPositiveButton("OK",null )
+                    .setTitle(getString(R.string.problem))
+                    .setMessage(getString(R.string.please_enter))
+                    .setPositiveButton(getString(R.string.ok),null )
                     .show();
         }else{
             int input_money = Integer.parseInt(dollar);
-            float conv_usd = (float)(input_money * 30.9);
+            float conv_usd = (float)(input_money / 30.9);
             usd.setText(""+conv_usd);
             new AlertDialog.Builder(this)
-                    .setTitle("Result")
-                    .setMessage("USD is "+ conv_usd)
-                    .setPositiveButton("ok", new DialogInterface.OnClickListener() {
+                    .setTitle(getString(R.string.result))
+                    .setMessage(getString(R.string.usd_is)+ conv_usd)
+                    .setPositiveButton(getString(R.string.ok), new DialogInterface.OnClickListener() {
                         @Override
                         public void onClick(DialogInterface dialogInterface, int i) {
                             ntd.setText("");
